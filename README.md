@@ -2,12 +2,17 @@
 
 GitHub actions will soon become a major player on the CI SaaS market, as far as I can tell GitHub actions can easily replace 
 most CI tools out there especially if you ship code as container images. 
-With GitHub actions you can do more then CI, most tasks performed today with 
+With GitHub actions you can do more then CI/CD, most tasks performed today with 
 bots (code sign validations, issue management, notifications, etc) can be made into workflows and run solely by GitHub.
+
+Why would you give up on your current CI SaaS and self hosted bots for GitHub actions? 
+For once GitHub actions simplifies automation by offering a serverless platform capable of handling the whole development pipeline, as a
+developer you don't have to jump from one SaaS to another to diagnose some build error. 
+The less environments you have to use on a regular bases the better it gets and as a developer you probably spend most of your time on GitHub anyway.
 
 ### The anatomy of a GitHub action
 
-In many ways GitHub actions are similar to FaaS and serverless, as with functions a GitHub action can be triggered by an 
+In many ways GitHub actions are similar to FaaS, as with functions a GitHub action can be triggered by an 
 event and you can chain multiple actions to create a workflow that defines how you want to react to that particular event.
 
 Most FaaS solutions made for Kubernetes let you package a function as a container image, 
