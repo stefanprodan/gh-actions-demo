@@ -215,7 +215,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: podinfo
-  namespace: staging
+  namespace: production
   annotations:
     flux.weave.works/tag.podinfod: semver:~1.3
     flux.weave.works/automated: 'true'
@@ -226,8 +226,18 @@ spec:
       - name: podinfod
         image: stefanprodan/podinfo:1.3.0
 ```
-
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png">
+
+If I make new release by pushing a tag to my demo app repo with `git tag 1.3.2 && git push origin 1.3.2` the GitHub actions will 
+test, build and push a container image as in `stefanprodan/podinfo:1.3.2` to the registry. 
+Weave Cloud Deploy will fetch the new image tag from Docker Hub, 
+will update the production deployment in the cluster repo and will apply the new deployment spec. 
+
+<img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-git.png">
+
+
+
+
 
 
 
