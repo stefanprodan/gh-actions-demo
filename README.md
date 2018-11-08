@@ -101,18 +101,13 @@ where GitHub actions are publishing immutable images (no latest tags, use semant
 
 I will be using [podinfo](https://github.com/stefanprodan/k8s-podinfo) to demonstrate a GitOps pipeline including promoting releases between environments.
 
-I'm assuming the following Git branching model:
-
-* dev branch (feature-ready state)
-* master branch (production-ready state)
-
-When commits are pushed in the dev branch, a GitHub workflow will kick in and produce a immutable container image as in `repo/app:branch-commitsha`.
-
 This is how a workflow could look for a golang app:
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-podinfo.png" height="500">
 
-The build action will tag the container image with the git branch-sha or with the git tag if you make a GitHub release.
+When commits are pushed to the master branch, the GitHub workflow will produce a immutable container image as in `repo/app:branch-commitsha`.
+When you do a GitHub release, the build action will tag the container image as `repo://app:git-tag`.
+
 The GitHub actions used in this workflow can be found [here](https://github.com/stefanprodan/gh-actions-demo/tree/master/.github).
 
 ```hcl
@@ -153,7 +148,10 @@ action "Push" {
 }
 ```
 
-If you have access to GitHub Action [here](https://github.com/stefanprodan/k8s-podinfo/blob/master/docs/8-gh-actions.md) is how you can bootstrap a private repository with the above workflow.
+If you have access to GitHub Action, [here](https://github.com/stefanprodan/k8s-podinfo/blob/master/docs/8-gh-actions.md) is how you can bootstrap a private repository with the above workflow.
+
+<img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png" height="500">
+
 
 
 
