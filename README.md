@@ -106,7 +106,7 @@ This is how the GitHub workflow looks for a golang app:
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-podinfo.png" height="500">
 
 When commits are pushed to the master branch, the GitHub workflow will produce a container image as in `repo/app:branch-commitsha`.
-When you do a GitHub release, the build action will tag the container image as `repo://app:git-tag`.
+When you do a GitHub release, the build action will tag the container image as `repo/app:git-tag`.
 
 The GitHub actions used in this workflow can be found [here](https://github.com/stefanprodan/gh-actions-demo/tree/master/.github).
 
@@ -182,8 +182,8 @@ to trigger it on every commit I can setup a GitHub web hook from the UI:
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-webhook.png">
 
-Now that my workloads are running in both namespaces I want to automate the deployment is such a way that every time I push to the 
-master branch the resulting image should run on staging and every time I do a GitHub release the production workload will be updated.
+Now that my workloads are running in both namespaces I want to automate the deployment in such a way that every time I push to the 
+master branch the resulting image would run on staging and every time I do a GitHub release the production workload would be updated.
 
 Weave Cloud Deploy allows you to define automated deployment polices based on container image tags. These policies can be specified 
 using annotations on the deployment YAML.
