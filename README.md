@@ -99,9 +99,9 @@ GitOps solves this problem by reapplying the config repo every time the cluster 
 For this to work you'll need a [GitOps operator](https://github.com/weaveworks/flux) that runs in your cluster and a container registry 
 where GitHub actions are publishing immutable images (no latest tags, use semantic versioning or git sha).
 
-I will be using [podinfo](https://github.com/stefanprodan/k8s-podinfo) to demonstrate a GitOps pipeline including promoting releases between environments.
+I will be using [gh-actions-demo](https://github.com/stefanprodan/gh-actions-demo) to demonstrate a GitOps pipeline including promoting releases between environments.
 
-This is how a workflow could look for a golang app:
+This is how the GitHub workflow looks for a golang app:
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-podinfo.png" height="500">
 
@@ -166,6 +166,14 @@ Now that the code repository workflow produces immutable container images, let's
 ``` 
 
 You can find the repository at [gh-actions-demo-cluster](https://github.com/stefanprodan/gh-actions-demo-cluster).
+
+The cluster repo contains two namespaces and the deployments YAMLs for my demo app. In order to create these objects on my cluster 
+I'll install the [Weave Cloud](https://weave.works) agents and connect the GitOps operator to my cluster repo.
+
+<img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-config.png">
+
+When Weave Cloud Deploy runs for the first time, it will apply all the YAMLs inside the repo: 
+namespaces first, then the services and finally the deployments.
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png">
 
