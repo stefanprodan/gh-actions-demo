@@ -228,12 +228,22 @@ spec:
 ```
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png">
 
-If I make new release by pushing a tag to my demo app repo with `git tag 1.3.2 && git push origin 1.3.2` the GitHub actions will 
+If I make a new release by pushing a tag to my demo app repo with `git tag 1.3.2 && git push origin 1.3.2` the GitHub actions will 
 test, build and push a container image as in `stefanprodan/podinfo:1.3.2` to the registry. 
 Weave Cloud Deploy will fetch the new image tag from Docker Hub, 
 will update the production deployment in the cluster repo and will apply the new deployment spec. 
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-git.png">
+
+Now if I want to rollback this deployment I can undo the git commit or I can use Weave Cloud and do a manual release of a previous version:
+
+<img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-undo.png">
+
+Weave Cloud will commit the new image tag to git and will report the deployment progress:
+
+<img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-progress.png">
+
+
 
 
 
