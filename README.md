@@ -8,7 +8,7 @@ bots (code sign validations, issue management, notifications, etc) can be made i
 Why would you give up on your current CI SaaS and self hosted bots for GitHub actions? 
 For once GitHub actions simplifies automation by offering a serverless platform capable of handling most development tasks, as a
 developer you don't have to jump from one SaaS to another to diagnose some build error. 
-The less environments you have to use on a regular bases the better it gets and as a developer you probably spend most of your time on GitHub anyway.
+The less environments you have to use on a regular basis the better it gets and as a developer you probably spend most of your time on GitHub anyway.
 
 ### The anatomy of a GitHub action
 
@@ -227,6 +227,9 @@ spec:
         image: stefanprodan/podinfo:1.3.0
 ```
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png">
+
+If I push commits to the demo app master branch, GitHub actions will publish a image as `stefanprodan/podinfo:master-48761af`, 
+Weave Cloud will update the cluster repo and deploy that image to the staging namespace.
 
 If I make a new release by pushing a tag to my demo app repo with `git tag 1.3.2 && git push origin 1.3.2` the GitHub actions will 
 test, build and push a container image as in `stefanprodan/podinfo:1.3.2` to the registry. 
