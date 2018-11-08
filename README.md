@@ -175,6 +175,14 @@ I'll install the [Weave Cloud](https://weave.works) agents and connect the GitOp
 When Weave Cloud Deploy runs for the first time, it will apply all the YAMLs inside the repo: 
 namespaces first, then the services and finally the deployments.
 
+Weave Cloud Deploy will pull and apply any changes made to the repository every five minutes, 
+to trigger it on every commit I can setup a GitHub web hook from the UI:
+
+<img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-webhook.png">
+
+### Continuous deployment pipeline 
+
+
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png">
 
 
