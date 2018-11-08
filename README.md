@@ -1,14 +1,17 @@
-# gh-actions-demo
+# Build the perfect Kubernetes CI/CD pipeline with GitHub Actions and GitOps
 
-GitHub actions will soon become a major player on the CI SaaS market, as far as I can tell GitHub actions can easily replace 
+### What is Github Actions?
+
+GitHub actions will soon become a major player in the CI tools market. As far as I can tell GitHub actions can easily replace 
 most CI tools out there especially if you ship code as container images. 
-With GitHub actions you can do more then CI/CD, most tasks performed today with 
+With GitHub actions, most tasks performed today with 
 bots (code sign validations, issue management, notifications, etc) can be made into workflows and run solely by GitHub.
 
-Why would you give up on your current CI SaaS and self hosted bots for GitHub actions? 
-For once GitHub actions simplifies automation by offering a serverless platform capable of handling most development tasks, as a
-developer you don't have to jump from one SaaS to another to diagnose some build error. 
-The less environments you have to use on a regular basis the better it gets and as a developer you probably spend most of your time on GitHub anyway.
+#### Why would you want to give up on your current CI tool and self hosted bots for GitHub actions? 
+
+Developer workflow is simplified by using GitHub as the platform to handle automating most development tasks and with GH Actions, it eliminates the need for traditional [CIOps](https://www.weave.works/blog/kubernetes-anti-patterns-let-s-do-gitops-not-ciops) driven workflows. 
+
+As a developer, you don't have to jump from one (SaaS - did u mean tool or environment?) to another to diagnose some build error. You spend most of your time on GitHub anyway, the fewer environments you have to use the better it is.
 
 ### The anatomy of a GitHub action
 
@@ -81,9 +84,9 @@ Jenkins docker pipelines, Drone, GCP builder and other tools are doing the same 
 don't need to build and publish the action container image to a registry. 
 Github lets you reference a git repo where your action Dockerfile is and it will build the container image before running the workflow. 
 
-### Building a GitOps pipeline for Kubernetes
+This effectively eliminates the need for traditional [CIOps](https://www.weave.works/blog/kubernetes-anti-patterns-let-s-do-gitops-not-ciops) Tools like Jenkins, Circle, Travis, etc. 
 
-GitOps has a different approach on how you define and deploy your workloads. 
+### Leveraging GH Actions with GitOps for CI/CD
 
 In the GitOps model the state of your Kubernetes cluster(s) is kept in a dedicated git repo (I will refer to this as the config repository). 
 That means the app deployments, Helm releases, network polices and any other Kubernetes custom resource are 
