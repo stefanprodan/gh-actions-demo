@@ -110,7 +110,7 @@ When commits are pushed in the dev branch, a GitHub workflow will kick in and pr
 
 This how a workflow could look for a golang app:
 
-![github-actions-ci](https://github.com/stefanprodan/gh-actions-demo/blob/master/docs/screens/github-actions-podinfo.png)
+<img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-podinfo.png" height="315">
 
 The build action will tag the container image with the git branch-sha or with the git tag if you make a GitHub release.
 The GitHub actions used in this workflow can be found [here](https://github.com/stefanprodan/gh-actions-demo/tree/master/.github).
