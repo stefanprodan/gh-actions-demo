@@ -167,8 +167,10 @@ Now that the code repository workflow produces immutable container images, let's
 
 You can find the repository at [gh-actions-demo-cluster](https://github.com/stefanprodan/gh-actions-demo-cluster).
 
-The cluster repo contains two namespaces and the deployments YAMLs for my demo app. In order to create these objects on my cluster 
-I'll install the [Weave Cloud](https://weave.works) agents and connect the GitOps operator to my cluster repo.
+The cluster repo contains two namespaces and the deployment YAMLs for my demo app. 
+The staging deployment is for when I push to the master branch and the production one if for when I do a GitHub release.
+
+In order to create these objects on my cluster, I'll install the [Weave Cloud](https://weave.works) agents and connect the GitOps operator to my cluster repo.
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-config.png">
 
@@ -180,8 +182,50 @@ to trigger it on every commit I can setup a GitHub web hook from the UI:
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-webhook.png">
 
-### Continuous deployment pipeline 
+Now that my workloads are running in both namespaces I want to automate the deployment is such a way that every time I push to the 
+master branch the resulting image should run on staging and every time I do a GitHub release the production workload will be updated.
 
+Weave Cloud Deploy allows you to define automated deployment polices based on container image tags. These policies can be specified 
+using annotations on the deployment YAML.
+
+In order to automate the master branch deployment I can edit the `staging/deployment.yaml` and create a glog filter:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: staging
+  annotations:
+    flux.weave.works/tag.podinfod: glog:master-*
+    flux.weave.works/automated: 'true'
+spec:
+  template:
+    spec:
+      containers:
+      - name: podinfod
+        image: stefanprodan/podinfo:master-a9a1252
+```
+
+For GitHub release I can create a semantic version filter and instruct Weave Cloud Deploy to update my production deployment 
+on every patch release:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: staging
+  annotations:
+    flux.weave.works/tag.podinfod: semver:~1.3
+    flux.weave.works/automated: 'true'
+spec:
+  template:
+    spec:
+      containers:
+      - name: podinfod
+        image: stefanprodan/podinfo:1.3.0
+```
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png">
 
