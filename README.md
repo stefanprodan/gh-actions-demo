@@ -150,7 +150,7 @@ action "Push" {
 
 If you have access to GitHub Action, [here](https://github.com/stefanprodan/k8s-podinfo/blob/master/docs/8-gh-actions.md) is how you can bootstrap a private repository with the above workflow.
 
-<img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png" height="500">
+<img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png">
 
 
 
