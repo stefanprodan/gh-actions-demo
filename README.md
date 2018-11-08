@@ -105,7 +105,7 @@ This is how a workflow could look for a golang app:
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-podinfo.png" height="500">
 
-When commits are pushed to the master branch, the GitHub workflow will produce a immutable container image as in `repo/app:branch-commitsha`.
+When commits are pushed to the master branch, the GitHub workflow will produce a container image as in `repo/app:branch-commitsha`.
 When you do a GitHub release, the build action will tag the container image as `repo://app:git-tag`.
 
 The GitHub actions used in this workflow can be found [here](https://github.com/stefanprodan/gh-actions-demo/tree/master/.github).
@@ -149,6 +149,23 @@ action "Push" {
 ```
 
 If you have access to GitHub Action, [here](https://github.com/stefanprodan/k8s-podinfo/blob/master/docs/8-gh-actions.md) is how you can bootstrap a private repository with the above workflow.
+
+Now that the code repository workflow produces immutable container images, let's create a config repository with the following structure:
+
+```
+├── namespaces
+│   ├── production.yaml
+│   └── staging.yaml
+└── workloads
+    ├── production
+    │   ├── deployment.yaml
+    │   └── service.yaml
+    └── staging
+        ├── deployment.yaml
+        └── service.yaml
+``` 
+
+You can find the repository at [gh-actions-demo-cluster](https://github.com/stefanprodan/gh-actions-demo-cluster).
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/github-actions-gitops.png">
 
