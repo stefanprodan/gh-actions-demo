@@ -7,6 +7,10 @@ Why would you give up your current CI SaaS and self hosted bots for GitHub Actio
 For one, GitHub Actions simplifies automation tasks by offering a serverless platform that is capable of handling most development tasks. As a developer you don't want to jump from one SaaS to another in order to diagnose a build error. 
 The fewer environments you have to use on a regular basis, the more productive you'll be. Not to mention that as a developer you probably spend most of your time on GitHub anyway.
 
+Should you use GitHub Action to deploy workloads on Kubernetes? 
+I think continuous deployment should not be part of the CI workflow, instead CD could be performed by a Kubernetes operator that implements a control loop that continuously applies the desired state to your cluster, offering protection against harmful actions like deployments deletion or network policies altering.
+You can read more about why we consider CiOps as being a Kubernetes anti-pattern [here](https://www.weave.works/blog/kubernetes-anti-patterns-let-s-do-gitops-not-ciops).
+
 ### The anatomy of a GitHub Action
 
 In many ways GitHub Actions are similar to FaaS, and like functions, a GitHub Action can be triggered by an 
@@ -244,8 +248,19 @@ Weave Cloud will then commit the new image tag to git and report the deployment 
 
 <img src="https://raw.githubusercontent.com/stefanprodan/gh-actions-demo/master/docs/screens/weave-cloud-progress.png">
 
+### Conclusions
 
+Once GitHub Actions will be general available I expect to see an explosion of custom actions from linting tools to security scanners and bots. 
+With a polished UX and with the compute power that Azure offers the chances are GitHub Actions GitHub will become the go-to platform for CI automation.  
 
+### Getting Help
+
+If you have any questions about GitOps or Weave Cloud:
+
+* Invite yourself to the Weave community slack.
+* Ask a question on the #flux slack channel.
+* Join the Weave User Group and get invited to online talks, hands-on training and meetups in your area.
+* Send an email to weave-users@weave.works
 
 
 
