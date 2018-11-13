@@ -12,7 +12,7 @@ The fewer environments you have to use on a regular basis, the more productive y
 In many ways GitHub Actions are similar to FaaS, and like functions, a GitHub Action can be triggered by an 
 event. Multiple actions can be chained together to create a workflow that defines how you want to react to that particular event.
 
-Most FaaS solutions made for Kubernetes let you package a function as a container image. A Github Action is no more then that with a piece of code packaged as a container image that GitHub runs for you. 
+Most FaaS solutions made for Kubernetes let you package a function as a container image. A Github Action is no more than that with a piece of code packaged as a container image that GitHub runs for you. 
 
 In order to make a GitHub Action all you need to do is to create a Dockerfile. Here is an example of a GitHub Action 
 that runs unit tests for a Golang project:
@@ -83,10 +83,9 @@ GitOps has a different approach on how you define and deploy your workloads.
 In the GitOps model, the state of your Kubernetes cluster(s) is kept in a dedicated git repo (I will refer to this as the config repository). This means the app deployments, Helm releases, network polices and any other Kubernetes custom resources are 
 managed from a single repo that defines your cluster's desired state.
 
-If you look at the [GKE CI/CD example](https://github.com/actions/example-gcloud/blob/master/.github/main.workflow#L76) by GitHub,
-the deployment file is in the same repo with the app code with the Docker image tag being injected from an environment variable. 
-This works fine until you run into a cluster melt down or you need to rollback a deployment to a previous version. 
-In the case of a major incident, you will have to rerun the last deployment workflow (in every app repo), but that doesn't mean you end up with the same state as before, since you will be building and deploying new images.
+If you look at the [GKE CI/CD example](https://github.com/actions/example-gcloud/blob/master/.github/main.workflow#L76) created by GitHub, the deployment file is in the same repo as the app code and the Docker image tag is injected from an environment variable. 
+This works fine until your cluster melts down or you need to rollback a deployment to a previous version. 
+In the case of a major incident, you will have to rerun the last deployment workflow (in every app repo), but since you will be building and deploying new images, it means that you won't end up with exactly the same state as before, .
 
 GitOps solves this problem by reapplying the config repo every time the cluster diverges from the state defined in git. 
 For this to work you'll need a [GitOps operator](https://github.com/weaveworks/flux) that runs in your cluster and a container registry 
