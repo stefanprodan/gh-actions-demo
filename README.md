@@ -1,4 +1,4 @@
-# gh-actions-demo
+# How to Create GitOps Pipelines with GitHub Actions
 
 GitHub Actions will become a major player on the CI SaaS market. It can easily replace most CI tools out there especially if you ship code as container images. With GitHub Actions you can do more than CI/CD.  Most tasks performed today with 
 bots (code sign validations, issue management, notifications, etc) can be made into workflows and run solely by GitHub.
@@ -9,11 +9,11 @@ The fewer environments you have to use on a regular basis, the more productive y
 
 Should you use GitHub Action to deploy workloads on Kubernetes? 
 I think continuous deployment should not be part of the CI workflow, instead CD could be performed by a Kubernetes operator that implements a control loop that continuously applies the desired state to your cluster, offering protection against harmful actions like deployments deletion or network policies altering.
-You can read more about why we consider CiOps as being a Kubernetes anti-pattern [here](https://www.weave.works/blog/kubernetes-anti-patterns-let-s-do-gitops-not-ciops).
+You can read more about why we consider CiOps a Kubernetes anti-pattern [here](https://www.weave.works/blog/kubernetes-anti-patterns-let-s-do-gitops-not-ciops).
 
 ### The anatomy of a GitHub Action
 
-In many ways GitHub Actions are similar to FaaS, and like functions, a GitHub Action can be triggered by an 
+In many ways GitHub Actions are similar to FaaS, and like serverless functions, a GitHub Action can be triggered by an 
 event. Multiple actions can be chained together to create a workflow that defines how you want to react to that particular event.
 
 Most FaaS solutions made for Kubernetes let you package a function as a container image. A Github Action is no more than that with a piece of code packaged as a container image that GitHub runs for you. 
@@ -250,7 +250,7 @@ Weave Cloud will then commit the new image tag to git and report the deployment 
 
 ### Conclusions
 
-Once GitHub Actions will be general available I expect to see an explosion of custom actions from linting tools to security scanners and bots. 
+Once GitHub Actions are generally available, I expect to see an explosion of custom actions that range from simple linting tools to security scanners and bots. 
 With a polished UI and the compute power that Azure offers, chances are GitHub Actions will become the go-to platform for CI automation.  
 
 ### Getting Help
