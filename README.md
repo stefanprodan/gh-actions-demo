@@ -251,7 +251,7 @@ Weave Cloud will then commit the new image tag to git and report the deployment 
 ### Conclusions
 
 Once GitHub Actions will be general available I expect to see an explosion of custom actions from linting tools to security scanners and bots. 
-With a polished UI and the compute power that Azure offers the chances are GitHub Actions will become the go-to platform for CI automation.  
+With a polished UI and the compute power that Azure offers, chances are GitHub Actions will become the go-to platform for CI automation.  
 
 ### Getting Help
 
